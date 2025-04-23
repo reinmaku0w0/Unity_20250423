@@ -402,7 +402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  playerInput: {fileID: 0}
+  playerInput: {fileID: 1792347414}
 --- !u!212 &1792347416
 SpriteRenderer:
   m_ObjectHideFlags: 0

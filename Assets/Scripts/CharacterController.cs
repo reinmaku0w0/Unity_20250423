@@ -16,7 +16,7 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         moveAction =  playerInput.actions.FindAction("Move");
-        moveAction =  playerInput.actions.FindAction("Jump");
+        jumpAction =  playerInput.actions.FindAction("Jump");
         jumpAction.performed += JumpActionOnperformed;
     }
 
@@ -25,15 +25,12 @@ public class CharacterController : MonoBehaviour
         Debug.Log("Jump");
     }
 
-    private bool dead;
+    //private bool dead;
 
     void Update()
     {
-        if (dead) return;
-        if (jumpAction.WasPressedThisFrame())
-        {
-            Debug.Log("Jump");
-        }
+        //if (dead) return;
+        //if (jumpAction.WasPressedThisFrame()){Debug.Log("Jump");}
 
     var moveVector2 = moveAction.ReadValue<Vector2>();
         //水平
