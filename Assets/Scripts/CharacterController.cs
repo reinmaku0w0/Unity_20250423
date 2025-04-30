@@ -5,7 +5,7 @@ using UnityEngine.TextCore.Text;
 public class CharacterController : MonoBehaviour
 { 
     [SerializeField]
-    private float moveSpeed = 3f;
+    private CharacterData characterData;
 
     [SerializeField]
     private PlayerInput playerInput;
@@ -40,7 +40,7 @@ public class CharacterController : MonoBehaviour
         //direction = direction.normalized;//正規化，避免斜著走較快
         
         //移動向量 deltaTime = 1/FPS
-        var movement = direction * moveSpeed * Time.deltaTime;
+        var movement = direction * characterData.moveSpeed * Time.deltaTime;
         transform.position += movement;
     }
 }

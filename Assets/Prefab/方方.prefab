@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc7f184d2f271754fbb0cc14e23b9d77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  characterData: {fileID: 11400000, guid: 432202854f9690a46b5916d02f25b2f7, type: 2}
   playerInput: {fileID: 641918142840275032}
 --- !u!114 &641918142840275032
 MonoBehaviour:
