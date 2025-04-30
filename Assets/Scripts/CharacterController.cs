@@ -11,26 +11,22 @@ public class CharacterController : MonoBehaviour
     private PlayerInput playerInput;
 
     private InputAction moveAction; //移動行為
-    private InputAction jumpAction; //跳躍行為
-
+    private InputAction interactAction; //互動行為
+    private bool dead;
+    
     void Start()
     {
-        moveAction =  playerInput.actions.FindAction("Move");
-        jumpAction =  playerInput.actions.FindAction("Jump");
-        jumpAction.performed += JumpActionOnperformed;
+        moveAction = playerInput.actions.FindAction("Move");
+        interactAction = playerInput.actions.FindAction("Interact");
     }
-
-    private void JumpActionOnperformed(InputAction.CallbackContext obj)
-    {
-        Debug.Log("Jump");
-    }
-
-    //private bool dead;
-
+    
     void Update()
     {
-        //if (dead) return;
-        //if (jumpAction.WasPressedThisFrame()){Debug.Log("Jump");}
+        if (dead) return;
+        if (interactAction.WasPressedThisFrame())//互動按鈕按下的判斷式
+        {
+            Debug.Log("interact button pressed");
+        }
 
     var moveVector2 = moveAction.ReadValue<Vector2>();
         //水平
