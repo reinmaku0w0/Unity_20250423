@@ -9,14 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5872985de64623540a3861a484b2c1db, type: 3}
-  m_Name: ShakeAnimation
+  m_Script: {fileID: 11500000, guid: 1bd731df632dce34085122bc138fdbfa, type: 3}
+  m_Name: NPC_DialogData
   m_EditorClassIdentifier: 
-  uniform: 0
-  maxXAmplitude: 3
-  minXAmplitude: 3
-  maxYAmplitude: 3
-  minYAmplitude: 3
-  uniformWait: 1
-  minWait: 0.1
-  maxWait: 0.1
+  dialogTexts:
+  - 111111
+  - 22222
