@@ -11,18 +11,51 @@ public class Dialog : MonoBehaviour
     
     [SerializeField]
     private TMP_Text tmpText;
+ 
+    //[SerializeField]
+    //private PlayerInput playerInput;
 
+
+    //private void Start(){}
+    //var interactAction = playerInput.actions.FindAction("Interact");
+    //interactAction.performed += InteractActionOnperformed;
+
+    //private void OnDisable(){}
+    //var interactAction = playerInput.actions.FindAction("Interact");
+    //interactAction.performed -= InteractActionOnperformed;
+
+    //private veld InteractActionOnperformed(InputAction.CallbackContext obj){}
+    //Debug.Log("互動鍵按下");
+    //如果對話完畢(最後一段話)，且打字機效果結束，則關閉對話框
+    //if (dialogIndex + 1 == dialogTexts.Count && tmpWriter.IsWriting == false){ CloseDialog(); return; }
+    //如果還在播放打字機效果，則Skip打字機效果
+    //if(tmpWriter.IsWriting) SkipWriter();
+    //如果打字機效果結束，則播放下一段文字
+    //else if (tmpWriter.IsWriting == false) PlayNextDialog();
+
+
+    //所有的對話
     private List<string> dialogTexts;
     
-    private int  dialogIndex = 0;
-
+    //顯示播放那一行的字句
     public void SetText(string text)
     {
         tmpWriter.SetText(text);
     }
+
+    //紀錄目前播到第幾段話，0行開始(第一行)
+    private int  dialogIndex = 0;
     
+    //儲存整段對話文字(?
+    public void SetTexts(List<string> texts)
+    {
+        dialogTexts = texts;
+    }
+
+    //開始對話
     public void StartDialog()
     {
+        //如果沒有對話，不做任何事
         if (dialogTexts.Count == 0) return;
         dialogIndex = 0; //重製Index 
         SetText(dialogTexts[dialogIndex]);
@@ -47,7 +80,7 @@ public class Dialog : MonoBehaviour
     } 
     
     //執行打字機效果
-    //[ContextMenu("執行打字機效果")
+    //[ContextMenu("執行打字機效果")]
     [Button("執行打字機效果")]
     public void PlayWriter()
     {
@@ -62,8 +95,9 @@ public class Dialog : MonoBehaviour
         tmpWriter.SkipWriter();
     }
 
-    public void SetTexts(List<string> texts)
+    [Button("關閉對話框")]
+    private void CloseDialog()
     {
-        dialogTexts = texts;
+        gameObject.SetActive(false);
     }
 }

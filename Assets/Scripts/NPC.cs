@@ -8,8 +8,6 @@ public class NPC : MonoBehaviour
 
     [SerializeField]
     private Dialog dialog;
-    
-    private int dialogIndex = 0;
 
     [Button("開始對話")]
     public void StartDialog()
