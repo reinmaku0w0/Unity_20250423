@@ -8,11 +8,19 @@ public class NPC : MonoBehaviour
 
     [SerializeField]
     private Dialog dialog;
+    
+    private int dialogIndex = 0;
 
-    [Button("播放對話")]
-    private void PlayDialog()
+    [Button("開始對話")]
+    public void StartDialog()
     {
-        dialog.SetText(dialogData.dialogTexts[0]);
-        dialog.PlayWriter();
+        dialog.SetTexts(dialogData.dialogTexts);
+        dialog.StartDialog();
+    }
+
+    [Button("播放下一段對話")]
+    public void PlayNextDialog()
+    {
+        dialog.PlayNextDialog();
     } 
 }

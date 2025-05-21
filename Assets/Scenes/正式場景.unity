@@ -335,6 +335,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &521891259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7607564513181995558, guid: 7317a9e70f4f403418fa1bb8171824e5, type: 3}
+  m_PrefabInstance: {fileID: 6111915649243353104}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &521891264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521891259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b39d83f9e2431e84ebf7af38670c6dc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tmpWriter: {fileID: 804600281}
+  tmpText: {fileID: 804600283}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,20 +509,6 @@ MonoBehaviour:
   initDatabase: 1
   previewUpdatesPerSecond: 60
   previewTimeScale: 1
---- !u!114 &804600286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 804600279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b39d83f9e2431e84ebf7af38670c6dc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tmpWriter: {fileID: 804600281}
-  tmpText: {fileID: 804600283}
 --- !u!1 &1643419647 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2374620001903289085, guid: 7317a9e70f4f403418fa1bb8171824e5, type: 3}
@@ -522,7 +527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogData: {fileID: 11400000, guid: 49ae945dbc5279145986dcc0559b8bf0, type: 2}
-  dialog: {fileID: 804600286}
+  dialog: {fileID: 521891264}
 --- !u!1001 &6087120454171343381
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -592,6 +597,10 @@ PrefabInstance:
       propertyPath: writeOnStart
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 99458254839278045, guid: 7317a9e70f4f403418fa1bb8171824e5, type: 3}
+      propertyPath: writeOnNewText
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2003078395254601377, guid: 7317a9e70f4f403418fa1bb8171824e5, type: 3}
       propertyPath: m_text
       value: "<wave><shake>\u55E8\u55E8!\u4F60\u597D\u5440~</></wave>"
@@ -652,6 +661,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2613920539593835257, guid: 7317a9e70f4f403418fa1bb8171824e5, type: 3}
+      propertyPath: m_Name
+      value: "Text (TMP)_\u5C0D\u8A71\u6587\u5B57"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607564513181995558, guid: 7317a9e70f4f403418fa1bb8171824e5, type: 3}
+      propertyPath: m_Name
+      value: "Canvas_\u5C0D\u8A71\u7CFB\u7D71"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -659,12 +676,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2374620001903289085, guid: 7317a9e70f4f403418fa1bb8171824e5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1643419650}
+    - targetCorrespondingSourceObject: {fileID: 7607564513181995558, guid: 7317a9e70f4f403418fa1bb8171824e5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 521891264}
     - targetCorrespondingSourceObject: {fileID: 2613920539593835257, guid: 7317a9e70f4f403418fa1bb8171824e5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 804600285}
-    - targetCorrespondingSourceObject: {fileID: 2613920539593835257, guid: 7317a9e70f4f403418fa1bb8171824e5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 804600286}
   m_SourcePrefab: {fileID: 100100000, guid: 7317a9e70f4f403418fa1bb8171824e5, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
