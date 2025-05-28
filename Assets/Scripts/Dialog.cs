@@ -1,8 +1,11 @@
 using System.Collections.Generic;
+using System.Net.Mime;
 using NaughtyAttributes;
 using TMPEffects.Components;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Dialog : MonoBehaviour
 {
@@ -12,26 +15,57 @@ public class Dialog : MonoBehaviour
     [SerializeField]
     private TMP_Text tmpText;
  
-    //[SerializeField]
-    //private PlayerInput playerInput;
+    [SerializeField]
+    private PlayerInput playerInput;
+
+    [SerializeField]
+    private Image nextDialogHint;
 
 
-    //private void Start(){}
-    //var interactAction = playerInput.actions.FindAction("Interact");
-    //interactAction.performed += InteractActionOnperformed;
+    private void Start()
+    {
+        nextDialogHint.gameObject.SetActive(false);
+        tmpWriter.OnFinishWriter.AddListener(OnFinishWriter);
+        tmpWriter.OnStartWriter.AddListener(OnStartWriter);
+        var interactAction = playerInput.actions.FindAction("Interact");
+        interactAction.performed += InteractActionOnperformed;
+    }
 
-    //private void OnDisable(){}
-    //var interactAction = playerInput.actions.FindAction("Interact");
-    //interactAction.performed -= InteractActionOnperformed;
+    private void OnStartWriter(TMPWriter arg0)
+    {
+        //如果打字機效果開始，隱藏提示圖片
+        nextDialogHint.gameObject.SetActive(false);
+    }
 
-    //private veld InteractActionOnperformed(InputAction.CallbackContext obj){}
-    //Debug.Log("互動鍵按下");
-    //如果對話完畢(最後一段話)，且打字機效果結束，則關閉對話框
-    //if (dialogIndex + 1 == dialogTexts.Count && tmpWriter.IsWriting == false){ CloseDialog(); return; }
-    //如果還在播放打字機效果，則Skip打字機效果
-    //if(tmpWriter.IsWriting) SkipWriter();
-    //如果打字機效果結束，則播放下一段文字
-    //else if (tmpWriter.IsWriting == false) PlayNextDialog();
+    private void OnFinishWriter(TMPWriter arg0)
+    {
+        //如果播放完，顯示下一句提示圖片
+        nextDialogHint.gameObject.SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        var interactAction = playerInput.actions.FindAction("Interact");
+        interactAction.performed -= InteractActionOnperformed;
+    }
+
+    private void InteractActionOnperformed(InputAction.CallbackContext obj)
+    {
+        Debug.Log("互動鍵按下");
+        
+        //如果對話完畢(最後一段話)，且打字機效果結束，則關閉對話框
+        if (dialogIndex + 1 == dialogTexts.Count && tmpWriter.IsWriting == false)
+        {
+            CloseDialog();
+            return;
+        }
+        
+        //如果還在播放打字機效果，則Skip打字機效果
+        if (tmpWriter.IsWriting) SkipWriter();
+        //如果打字機效果結束，則播放下一段文字
+        else if (tmpWriter.IsWriting == false) PlayNextDialog();
+    }
+
 
 
     //所有的對話
