@@ -16,6 +16,7 @@ public class CharacterController : MonoBehaviour
     
     void Start()
     {
+        canMove = true;
         moveAction = playerInput.actions.FindAction("Move");
         interactAction = playerInput.actions.FindAction("Interact");
     }
@@ -42,5 +43,12 @@ public class CharacterController : MonoBehaviour
         //移動向量 deltaTime = 1/FPS
         var movement = direction * characterData.moveSpeed * Time.deltaTime;
         transform.position += movement;
+    }
+
+    private bool canMove;
+
+    public void SetCanMoving(bool canMove)
+    { 
+        this.canMove = canMove;
     }
 }

@@ -21,12 +21,25 @@ public class Dialog : MonoBehaviour
     [SerializeField]
     private Image nextDialogHint;
 
+    [SerializeField]
+    private CharacterController characterControllert;
+
+    public static Dialog Instance;
+
+    private void Awake() 
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
         nextDialogHint.gameObject.SetActive(false);
         tmpWriter.OnFinishWriter.AddListener(OnFinishWriter);
         tmpWriter.OnStartWriter.AddListener(OnStartWriter);
+    }
+
+    private void OnEnable()
+    {
         var interactAction = playerInput.actions.FindAction("Interact");
         interactAction.performed += InteractActionOnperformed;
     }
@@ -91,9 +104,11 @@ public class Dialog : MonoBehaviour
     {
         //如果沒有對話，不做任何事
         if (dialogTexts.Count == 0) return;
+        isInDialog = true;
         dialogIndex = 0; //重製Index 
         SetText(dialogTexts[dialogIndex]);
         PlayWriter();
+        characterController.SetCanMoving(false);
     }
 
     [Button("播放下一段對話")]
@@ -133,5 +148,20 @@ public class Dialog : MonoBehaviour
     private void CloseDialog()
     {
         gameObject.SetActive(false);
+        isInDialog = false;
     }
+
+    //是否處於對話中
+    private bool isInDialog;
+
+    public bool IsInDialog()
+    { 
+        return isInDialog;
+    }
+
+    public void SetPosition(Vector3 position) 
+    {
+        transform.position = position + new Vector3(0,3,0);
+    }
+
 }

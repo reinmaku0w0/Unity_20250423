@@ -22,7 +22,7 @@ public class NPC : MonoBehaviour
 
     private void Start()
     {
-        dialog.gameObject.SetActive(false);
+        Dialog.Instance.gameObject.SetActive(false);
         npcUI_Panel.alpha = 0;
         playerInput.actions.FindAction("Interact").performed+= OnInteractActionPerformed;
     }
@@ -39,6 +39,9 @@ public class NPC : MonoBehaviour
     private void OnInteractActionPerformed(InputAction.CallbackContext obj)
     {
         Debug.Log("按下互動鍵");
+        //已在對話中
+        if (Dialog.Instance.IsInDialog()) return;
+        //角色在範圍內，開始對話
         if (characterInTrigger)
         {
            StartDialog(); 
@@ -82,14 +85,15 @@ public class NPC : MonoBehaviour
     [Button("開始對話")]
     public void StartDialog()
     {
-        dialog.gameObject.SetActive(true);
-        dialog.SetTexts(dialogData.dialogTexts);
-        dialog.StartDialog();
+        Dialog.Instance.SetPosition(transform.position);
+        Dialog.Instance.gameObject.SetActive(true);
+        Dialog.Instance.SetTexts(dialogData.dialogTexts);
+        Dialog.Instance.StartDialog();
     }
 
     [Button("播放下一段對話")]
     public void PlayNextDialog()
     {
-        dialog.PlayNextDialog();
+        Dialog.Instance.PlayNextDialog();
     } 
 }
